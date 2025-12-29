@@ -21,7 +21,7 @@ class Tarea(models.Model):
     creador = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='tareas_creadas')
     estado = models.CharField(max_length=15, choices=ESTADOS, default='pendiente')
 
-    requiere_validacion = models.BooleanField(default=False, help_text='¿Es evaluable la tearea?')
+    requiere_validacion = models.BooleanField(default=False, help_text='¿Es evaluable la tarea?')
     profesor = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, blank=True, on_delete=models.CASCADE, related_name='tareas_evaluables')
 
     def __str__(self):
@@ -53,4 +53,4 @@ class Usuario(AbstractUser):
         return self.rol == self.alumno
 
     def is_profesor(self):
-        return self.rol == self.profesor
+        return self.rol == self.profesor 
